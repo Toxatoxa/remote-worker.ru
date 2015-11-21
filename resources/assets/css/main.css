@@ -1,0 +1,656 @@
+body {
+    color: #333333;
+    font-family: Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.pure-g [class *="pure-u"] {
+    font-family: Lato, sans-serif;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Add transition to containers so they can push in and out */
+#layout, #menu, .menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/* This is the parent `<div>` that contains the menu and the content area */
+#layout {
+    position: relative;
+    padding-left: 0;
+}
+
+#layout.active #menu {
+    left: 250px;
+    width: 250px;
+}
+
+#layout.active .menu-link {
+    left: 250px;
+}
+
+/* The content `<div>` is where all your content goes */
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+}
+
+@media (max-width: 50em) {
+    .content {
+        padding-bottom: 2em;
+    }
+}
+
+.header {
+    margin: 0;
+    color: #333333;
+    text-align: center;
+    padding: 2.5em 2em 0;
+    /*border-bottom: 1px solid #EEEEEE;*/
+}
+
+.header-home {
+    margin: 0;
+    color: #333333;
+    text-align: center;
+    padding: 2.5em 2em 0;
+}
+
+.header h1, .header-home h1 {
+    margin: 0.2em 0;
+    font-size: 2.3em;
+    font-weight: 300;
+}
+
+.header h2, .header-home h2 {
+    font-weight: 300;
+    font-size: 1.5em;
+    color: #5E5E5E;
+    padding: 0;
+    margin-top: 0;
+}
+
+p.index-about {
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+}
+
+p.index-about span {
+    font-weight: bold;
+    color: #000000;
+}
+
+p#index-feedback.index-about {
+    width: 70%;
+    padding-top: 4em;
+}
+
+p#index-feedback.index-about a {
+    color: #D65050;
+}
+
+/* The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page */
+#menu {
+    margin-left: -251px; /* "#menu" width */
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #FFFFFF;
+    overflow-y: auto;
+    border-right: 1px solid #EEEEEE;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* All anchors inside the menu should be styled like this */
+#menu a {
+    color: #333333;
+    border: none;
+    padding: 0.6em 0 0.6em 2.3em;
+}
+
+/* Remove all background/borders, since we are applying them to #menu */
+#menu .pure-menu, #menu .pure-menu ul {
+    border: none;
+    background: transparent;
+}
+
+/* Change color of the anchor links on hover/focus */
+#menu .pure-menu li a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* This styles the menu heading. 0.21em */
+#menu .pure-menu-heading {
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
+    font-size: 110%;
+    color: #D65050;
+    font-weight: bold;
+    margin-left: -1.4em;
+}
+
+#menu .pure-menu-heading span {
+    font-weight: normal;
+    color: #333333;
+}
+/*
+#menu .pure-menu-heading:hover {
+
+}
+*/
+
+/* Dynamic Button For Responsive Menu */
+
+/* The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works: */
+
+/* `.menu-link` represents the responsive menu toggle that shows/hides on small
+screens */
+
+.i-menu{
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    height: 44px;
+    background: rgba(0,0,0,0.7);
+}
+
+.menu-link {
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 0;
+    left: 0; /* "#menu width" */
+    /*background: #000000;
+    background: rgba(0,0,0,0.7);*/
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 100%;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+}
+
+.menu-link:hover {
+    background: #000000;
+}
+
+.menu-link span {
+    position: relative;
+    display: block;
+}
+
+.menu-link span, .menu-link span:before, .menu-link span:after {
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 0.2em;
+}
+
+.menu-link span:before, .menu-link span:after {
+    position: absolute;
+    margin-top: -0.6em;
+    content: " ";
+}
+
+.menu-link span:after {
+    margin-top: 0.6em;
+}
+
+/* Responsive Styles (Media Queries) */
+
+/* Hides the menu at `48em`, but modify this based on your app's needs */
+@media (min-width: 48em) {
+    .header, .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    .header-home {
+        margin-top: 10em;
+    }
+
+    #layout {
+        padding-left: 250px; /* left col width "#menu" */
+        left: 0;
+    }
+
+    #menu {
+        left: 250px;
+    }
+
+    .i-menu{
+        display: none;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 250px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 250px;
+    }
+
+
+}
+
+#layout.active .i-menu {
+    left: 250px;
+}
+
+/* Only apply this when the window is small. Otherwise, the following case
+results in extra padding on the left:
+* Make the window small. * Tap the menu to trigger the active state. * Make the
+ window large again */
+@media (max-width: 48em) {
+    #layout.active {
+        position: relative;
+        left: 250px;
+    }
+
+    #layout-content {
+        padding: 0;
+    }
+
+    p.summary {
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    div.contact-form.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2 {
+        padding-bottom: 30px;
+    }
+}
+
+/* Custom Style */
+
+.i-menu a.i-menu-heading {
+    text-decoration: none;
+    font-size: 110%;
+    color: #D65050;
+    font-weight: bold;
+    /*margin-left: -1.4em;*/
+    display: block;
+    width: 150px;
+    margin: 0.5em auto;
+}
+
+.i-menu a.i-menu-heading span {
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+/* Menu */
+#menu a.pure-menu-heading {
+    text-decoration: none;
+}
+
+.pure-menu-item {
+    margin-left: 0.5em;
+    line-height: 1.2em;
+    letter-spacing: 0.01em;
+}
+
+.fa-ul {
+    margin-left: 0;
+}
+
+.fa-li {
+    left: 0em;
+    top: 0.66em;
+}
+
+.pure-menu-active {
+    padding-left: -2.5em;
+}
+
+.pure-menu-active>.pure-menu-link, .pure-menu-link:hover {
+    background: #D65050;
+}
+
+/* Sidebar */
+.sidebar-heading {
+    font-size: 100%;
+    color: #333333;
+    margin-bottom: -0.5em;
+    margin-left: 1em;
+}
+
+.sidebar-tag {
+    list-style: none;
+    margin-left: -2em;
+}
+
+.sidebar-tag-item {
+    float: left;
+    padding: 0.75em 0 0.4em 0.4em;
+}
+
+#menu .sidebar-tag-item a {
+    background-color: #EDEDED;
+    color: #333333;
+    text-decoration: none;
+    margin: 0.1em 0em;
+    padding: 0.3em 1em;
+    font-size: 80%;
+    border: 1px solid #EDEDED;
+    border-radius: 3px;
+}
+
+#menu .sidebar-tag-item a:hover {
+    background-color: #D65050;
+    color: #FFFFFF;
+    border: 1px solid #D65050;
+
+}
+
+.sidebar-social-wrapper {
+    list-style: none;
+    margin-left: -2em;
+    font-size: 1.5em;
+}
+
+.sidebar-social-icon {
+    float: left;
+    padding-top: 1em;
+}
+
+div#sidebar {
+    clear: both;
+}
+
+#sidebar ul {
+    clear: both;
+}
+
+i.fa.fa-twtr {
+    margin-right: -0.4em;
+}
+
+i.fa.fa-fb {
+    margin-right: -0.4em;
+}
+
+.fa-twitter:before, .fa-twtr:before {
+    content: "\f099";
+}
+
+.fa-facebook:before, .fa-fb:before {
+    content: "\f09a";
+}
+
+#menu .sidebar-social-icon a:hover, #menu .sidebar-social-icon a:focus {
+    text-decoration: none;
+    color: #D65050;
+}
+
+.sidebar-menu-wrapper {
+    list-style: none;
+    margin-left: -0.9em;
+    font-size: 0.9em;
+}
+
+.sidebar-menu {
+    padding: 2em 0 1em 0em;
+    float: left;
+}
+
+#menu .sidebar-menu a:hover, #menu .sidebar-menu a:focus {
+    text-decoration: underline;
+    color: #333;
+}
+
+p.copyright {
+    float: left;
+    line-height: 1.75;
+    margin-left: 1em;
+    font-size: 80%;
+}
+
+#menu a.hugo {
+    padding: 0em 0em 0em 0em;
+}
+
+/* Books */
+.l-box {
+    margin-top: 0.83em;
+    padding: 1em;
+}
+
+/* Contact */
+div.contact-form.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2 {
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.pure-form input[type=text]:focus, .pure-form input[type=password]:focus,
+.pure-form input[type=email]:focus, .pure-form input[type=url]:focus,
+.pure-form input[type=date]:focus, .pure-form input[type=month]:focus,
+.pure-form input[type=time]:focus, .pure-form input[type=datetime]:focus {
+    outline: 0;
+    border-color: #D65050;
+}
+
+.pure-form input[type=datetime-local]:focus, .pure-form input[type=week]:focus,
+.pure-form input[type=number]:focus, .pure-form input[type=search]:focus,
+.pure-form input[type=tel]:focus, .pure-form input[type=color]:focus,
+.pure-form select:focus, .pure-form textarea:focus {
+    outline: 0;
+    border-color: #D65050;
+}
+
+.pure-form input:not([type]):focus {
+    outline: 0;
+    border-color: #D65050;
+}
+
+.pure-form input[type=text][disabled], .pure-form input[type=password][disabled],
+.pure-form input[type=email][disabled], .pure-form input[type=url][disabled],
+.pure-form input[type=date][disabled], .pure-form input[type=month][disabled],
+.pure-form input[type=time][disabled], .pure-form input[type=datetime][disabled],
+.pure-form input[type=datetime-local][disabled], .pure-form input[type=week][disabled],
+.pure-form input[type=number][disabled], .pure-form input[type=search][disabled],
+.pure-form input[type=tel][disabled], .pure-form input[type=color][disabled],
+.pure-form select[disabled], .pure-form textarea[disabled] {
+    cursor: not-allowed;
+    background-color: #EAEDED;
+    color: #CAD2D3;
+}
+
+.pure-form input:focus:invalid, .pure-form textarea:focus:invalid,
+.pure-form select:focus:invalid {
+    color: #B94A48;
+    border-color: #E9322D;
+}
+
+.pure-button-primary {
+    background-color: #EDEDED;
+    color: #333333;
+    border-radius: 3px;
+}
+
+.pure-button-hover, .pure-button:hover, .pure-button:focus {
+    filter: none;
+    background-image: none;
+    background-color: #D65050;
+    color: #FFFFFF;
+}
+
+div#contact-form-message {
+    padding-top: 1em;
+    color: #D65050;
+}
+
+/* Advertise */
+.index-sponsor {
+    margin: 0;
+    text-align: center;
+    padding: 2.5em 2em 0;
+}
+
+p.index-sponsor-text span {
+    color: #D65050;
+}
+
+p.index-sponsor-text span:hover {
+    color: #333333;
+}
+
+p.index-sponsor-text a {
+    line-height: 3;
+    color: #333333;
+    text-decoration: none;
+    margin: 0.1em 0em;
+    padding: 0.3em 0.3em;
+}
+
+p.index-sponsor-text a:hover {
+    text-decoration: underline;
+    background-color: #D65050;
+    color: #FFFFFF;
+    border: 1px solid #D65050;
+    border-radius: 3px;
+}
+
+@media (min-width: 48em) {
+    p.index-sponsor-text a {
+        margin: 0 auto;
+        width: 60%;
+        text-align: center;
+    }
+
+    .index-sponsor {
+        margin: 0;
+        text-align: center;
+        padding: 5.5em 2em 0;
+    }
+}
+
+@media (max-width: 20em) {
+    p.index-sponsor-text a, p.index-sponsor-text {
+        display: none;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #444444;
+}
+
+a:hover, a:focus {
+    text-decoration: underline;
+}
+
+h3 {
+    font-weight: 100;
+}
+
+/* Content Layout */
+#content-layout {
+    padding: 0;
+}
+
+.post {
+    padding-bottom: 2em;
+}
+
+.post-title {
+    font-size: 1.3em;
+    margin-bottom: 0.2em;
+    text-transform: capitalize;
+    color: #D65050;
+}
+
+.post-title a{
+    color: #D65050;
+}
+
+.post-description {
+    color: #333333;
+    line-height: 1.8em;
+}
+
+div.post-description p a {
+    color: #D65050;
+}
+
+.post-meta {
+    color: #5E5E5E;
+    font-size: 90%;
+    margin: 0;
+}
+
+.post-tag {
+    display: inline-block;
+    margin: 0.1em 0.1em;
+    padding: 0.3em 1em;
+    color: #333333;
+    font-size: 80%;
+    border-radius: 3px;
+}
+
+.post-tag-design {
+    background-color: #EDEDED;
+}
+
+.post-tag:hover, .post-tag:focus {
+    color: #FFFFFF;
+    background-color: #D65050;
+    text-decoration: none;
+}
+
+.post-images {
+    margin: 1em 0;
+}
+
+.post-image-meta {
+    margin-top: -3.5em;
+    margin-left: 1em;
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px #333333;
+}
+
+/* Sponsored Post */
+.content-subhead {
+    text-transform: uppercase;
+    color: #333333;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 0.4em 0;
+    font-size: 80%;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.header_sep{
+    width: 800px;
+    height: 1px;
+    display: block;
+    background-color: #EEEEEE;
+    margin: 0 auto;
+}
+
+.post-sep{
+    margin-top: 10px;
+    width: 30px;
+    height: 1px;
+    display: block;
+    background-color: #D65050;
+}
