@@ -7,31 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Record extends Model
 {
     protected $fillable = [
+        'category_id',
         'alias',
         'title',
-        'description',
-        'body',
-        'category_id',
-        'url',
+        'coordinate_x',
+        'coordinate_y',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo('\App\Category');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('\App\User');
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany('\App\Tag');
-    }
-
-    public function getTagListAttribute()
-    {
-        return $this->tags->lists('id')->toArray();
     }
 }

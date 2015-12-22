@@ -33,13 +33,11 @@ class ViewComposerServiseProvider extends ServiceProvider
      */
     private function composeNavigation()
     {
-        //view()->composer('partials.menu', 'App\Http\Composers\NavigationComposer');
-
         view()->composer('partials.menu', function($view)
         {
-            //$category = Category::byName($alias)->firstOrFail();
-            $view->with('categories', Category::orderByName()->get());
-            $view->with('tags', Tag::all());
+            $view->with('categories', Category::main()->orderByName()->get());
+            //$view->with('tags', Tag::all());
+            $view->with('tags', []);
         });
 
     }

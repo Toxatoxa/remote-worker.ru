@@ -1,15 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
-
-    <div class="header">
-        <h1>Удаленный Работник</h1>
+    <div alt="Определить Ваше местоположение" id="location">
+        <button class="mylocation"><div></div></button>
     </div>
-    <div class="section-layout">
-        <div class="content">
-            <div class="posts">
-                <p>Удаленный Работник является колекцией ресурсов цифрового бродяги...</p>
-            </div>
-        </div>
+    <div id="zoom">
+        <button  class="zoom-in" alt="Увеличить"><div></div></button>
+        <button  class="zoom-out" alt="Уменьшить"><div></div></button>
     </div>
+    <div id="maptype" class="roadmap" alt="Сменить тип отображения карты"><div></div></div>
+    <div id="map"></div>
 @endsection

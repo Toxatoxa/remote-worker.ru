@@ -9,9 +9,9 @@ class Category extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title',
+        'parent_id',
         'alias',
-        'description',
+        'title',
         'icon',
     ];
 
@@ -20,9 +20,22 @@ class Category extends Model
         $query->where('alias', '=', $alias);
     }
 
+    public function scopeMain($query)
+    {
+        $query->where('parent_id', '=', '0');
+    }
+
     public function scopeOrderByName($query)
     {
         $query->orderBy('title');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function suns()
+    {
+        return $this->hasMany('\App\Category', 'parent_id', 'id');
     }
 
     public function records()
